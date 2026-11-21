@@ -1,0 +1,225 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-devanagari: "Tiro Devanagari Hindi", Georgia, serif;
+  --font-devanagari-display: "Yatra One", "Rozha One", serif;
+  --font-editorial-hi: "Rozha One", "Cormorant Garamond", serif;
+
+  --color-ivory: #F5ECD9;
+  --color-ivory-surface: #EBDEC4;
+  --color-ivory-border: #D4BF99;
+  --color-saffron: #B9652B;
+  --color-maroon: #451517;
+  --color-maroon-dark: #310D0F;
+  --color-forest: #2A381C;
+  --color-gold: #C8A15A;
+  --color-charcoal: #261B16;
+  --color-stone-ink: #5A493E;
+}
+
+/* Default Royal Indian Heritage Theme: Sanganeri (Royal Maroon, Temple Olive & Antique Gold) */
+:root,
+[data-heritage-theme="sanganeri"] {
+  --theme-bg: #F4EAD6;
+  --theme-surface: #E9DAC0;
+  --theme-surface-alt: #FAF3E5;
+  --theme-sand-tile: #DEC5A0;
+  --theme-border: #D2BC96;
+  --theme-primary: #4A1618;
+  --theme-primary-dark: #330D0F;
+  --theme-secondary: #2A3718;
+  --theme-secondary-deep: #1E2811;
+  --theme-accent: #9C4E24;
+  --theme-gold: #C9A258;
+  --theme-gold-bright: #E7C888;
+  --theme-header-gold: #DEC082;
+  --theme-ink: #291B15;
+  --theme-ink-muted: #5C4A3E;
+  --theme-footer-bg: #2E0F11;
+  --theme-pattern-dot: rgba(74, 22, 24, 0.055);
+}
+
+/* Cultural Heritage Theme: Mithila Madhubani Folk Art (Vermilion, Ochre Parchment & Peacock Indigo) */
+[data-heritage-theme="madhubani"] {
+  --theme-bg: #F5E9CE;
+  --theme-surface: #E9D6B0;
+  --theme-surface-alt: #FAF2E1;
+  --theme-sand-tile: #DFC394;
+  --theme-border: #CFAF7E;
+  --theme-primary: #7E2019;
+  --theme-primary-dark: #5A140F;
+  --theme-secondary: #1D3E44;
+  --theme-secondary-deep: #132B2F;
+  --theme-accent: #B46A18;
+  --theme-gold: #C9953D;
+  --theme-gold-bright: #EBC574;
+  --theme-header-gold: #DFBA74;
+  --theme-ink: #231812;
+  --theme-ink-muted: #594637;
+  --theme-footer-bg: #2B120E;
+  --theme-pattern-dot: rgba(126, 32, 25, 0.06);
+}
+
+/* Cultural Heritage Theme: Nathdwara Pichwai Miniature (Temple Emerald, Lotus Crimson & Burnished Gold) */
+[data-heritage-theme="pichwai"] {
+  --theme-bg: #F5EEDB;
+  --theme-surface: #E7DEC6;
+  --theme-surface-alt: #FBF7EC;
+  --theme-sand-tile: #D9CCA9;
+  --theme-border: #CBB992;
+  --theme-primary: #1B3D31;
+  --theme-primary-dark: #112A21;
+  --theme-secondary: #5D1D27;
+  --theme-secondary-deep: #41121A;
+  --theme-accent: #A6722E;
+  --theme-gold: #C89E4D;
+  --theme-gold-bright: #EAD090;
+  --theme-header-gold: #DAC084;
+  --theme-ink: #1D231E;
+  --theme-ink-muted: #4F564C;
+  --theme-footer-bg: #152B23;
+  --theme-pattern-dot: rgba(27, 61, 49, 0.055);
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    background-color: var(--theme-bg);
+    color: var(--theme-ink);
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: var(--font-serif);
+    text-wrap: balance;
+  }
+
+  .font-hi,
+  .font-hi-serif {
+    font-family: var(--font-devanagari);
+  }
+
+  .font-hi-display {
+    font-family: var(--font-devanagari-display);
+  }
+
+  .font-editorial-hi {
+    font-family: var(--font-editorial-hi);
+  }
+
+  button, a, input, select, textarea {
+    outline-color: var(--theme-primary);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--theme-primary);
+    outline-offset: 2px;
+  }
+}
+
+/* Seamless Sanganeri floral botanical wallpaper backdrop (direct layered background for clean mix-blend-multiply) */
+.sanganeri-parchment-bg {
+  background-color: var(--theme-bg);
+  background-image:
+    linear-gradient(
+      color-mix(in srgb, var(--theme-bg) 84%, transparent),
+      color-mix(in srgb, var(--theme-bg) 84%, transparent)
+    ),
+    url("/assets/aistudio/image_4e24787a.png");
+  background-size: auto, 460px auto;
+  background-repeat: repeat, repeat;
+}
+
+/* Embossed antique gold header strip with subtle vintage floral texture */
+.gilded-heritage-bar {
+  position: relative;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--theme-header-gold) 94%, #8E6A2D) 0%,
+    var(--theme-header-gold) 50%,
+    color-mix(in srgb, var(--theme-header-gold) 94%, #8E6A2D) 100%
+  );
+}
+
+.gilded-heritage-bar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("/assets/aistudio/image_4e24787a.png");
+  background-size: 320px auto;
+  background-repeat: repeat;
+  opacity: 0.14;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+.heritage-paper-surface {
+  background-color: var(--theme-bg);
+  background-image: radial-gradient(var(--theme-pattern-dot) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+.heritage-manuscript-frame {
+  box-shadow:
+    inset 0 0 0 1px var(--theme-border),
+    inset 0 0 0 5px var(--theme-bg),
+    inset 0 0 0 6px color-mix(in srgb, var(--theme-gold) 55%, transparent);
+}
+
+/* Radial mask to cleanly isolate the golden mandala core from outer corners */
+.mandala-radial-mask {
+  -webkit-mask-image: radial-gradient(circle at center, #000 50%, rgba(0, 0, 0, 0.85) 57%, transparent 65%);
+  mask-image: radial-gradient(circle at center, #000 50%, rgba(0, 0, 0, 0.85) 57%, transparent 65%);
+}
+
+@keyframes akshat-marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes mandala-slow-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.akshat-marquee-track {
+  animation: akshat-marquee 42s linear infinite;
+  will-change: transform;
+}
+
+.akshat-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.mandala-gentle-spin {
+  animation: mandala-slow-spin 90s linear infinite;
+  will-change: transform;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .akshat-marquee-track,
+  .mandala-gentle-spin {
+    animation: none !important;
+  }
+}
